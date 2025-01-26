@@ -3,28 +3,18 @@ package main
 import "fmt"
 
 func main() {
-	var firstname string = "John"
-	lastname := "Doe" // Shortcut for assigning a value to a new variable, the type is inferred.
-	var age int = 20
+	var fullname string = "John Doe"
+	var age int = 27
+	jobTitle := "Go Developer"
+	annualSalary := 70000.00
 
-	fmt.Println("my name is", firstname, lastname, "and my age is ", age)
-	fmt.Println(firstname, "has a length of", len(firstname))
+	fmt.Printf("%s %d yo - %s\n", fullname, age, jobTitle)
+	fmt.Printf("Annual Salary $%.0f\n", annualSalary)
+	fmt.Printf("Monthly Salary $%.2f\n\n", annualSalary/12)
 
-	// You can't do this
-	// 1. := is allowed once on a variable
-	// lastname := "Carter" 	// error, lastname = "Carter" will work
-
-	// 2. Go is statically typed
-	// age = "Hello" 	// error
-
-	// Using other numeric types
-	var age1 uint8 = 60
-	var monthSalary uint16 = 22700
-	var yearSalary uint32 = 12 * 22700
-
-	fmt.Println("Now my age is", age1, "and my monthly salary is", monthSalary, ", my annual salary is", yearSalary)
-
-	// It doesn't work if I try to do:
-	// age1 = 257   // uint8 can only store value between 0 and 255
-	// monthSalary = 12 * 22700   // uint16 can only store value between 0 and 65535
+	// Using some printing formats
+	fmt.Printf("%v %v yo - %v\n", fullname, age, jobTitle)
+	fmt.Printf("%q %T\n", fullname, fullname)
+	fmt.Printf("You have an annual salary greater than $100000. %t\n", (annualSalary > 100000))
+	fmt.Printf("The value %q is stored in %p.\n", fullname, &fullname)
 }
