@@ -3,28 +3,29 @@ package main
 import "fmt"
 
 func main() {
-	var firstname string = "John"
-	lastname := "Doe" // Shortcut for assigning a value to a new variable, the type is inferred.
-	var age int = 20
-
-	fmt.Println("my name is", firstname, lastname, "and my age is ", age)
-	fmt.Println(firstname, "has a length of", len(firstname))
+	// Arrays
+	students := [5]string{"John", "Jane", "Eric", "Louise", "Alice"}
+	ratings := [5]float32{7.25, 9, 7, 8.5, 9.75}
+	students[2] = "Bob"
+	ratings[len(ratings)-1] = 8.75
 
 	// You can't do this
-	// 1. := is allowed once on a variable
-	// lastname := "Carter" 	// error, lastname = "Carter" will work
+	// students[6] = "Milo"   // index 6 out of bounds [0:5]
+	// students[0] = 123   // 123 is not a string
 
-	// 2. Go is statically typed
-	// age = "Hello" 	// error
+	fmt.Println(students, ratings)
 
-	// Using other numeric types
-	var age1 uint8 = 60
-	var monthSalary uint16 = 22700
-	var yearSalary uint32 = 12 * 22700
+	// Slices
+	employees := []string{"Bob", "Alice", "John", "Louise"}
+	employees = append(employees, "Milo")
+	fmt.Println(employees)
+	fmt.Println("Employees for the morning are:", employees[:2])
+	fmt.Println("Employees for the evening are:", employees[2:])
 
-	fmt.Println("Now my age is", age1, "and my monthly salary is", monthSalary, ", my annual salary is", yearSalary)
-
-	// It doesn't work if I try to do:
-	// age1 = 257   // uint8 can only store value between 0 and 255
-	// monthSalary = 12 * 22700   // uint16 can only store value between 0 and 65535
+	// Arrays and slices
+	students1 := students[:2]
+	fmt.Println(students, students1)
+	students1 = append(students1, "Marc", "Toby")
+	fmt.Println(students, students1) // Output: [John Jane Marc Toby Alice] [John Jane Marc Toby]
+	fmt.Println("cap(students1) =", cap(students1))
 }
