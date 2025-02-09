@@ -84,3 +84,44 @@ produces the same slice as allocating an array and slicing it, so these two expr
 make([]int, 50, 100)
 new([100]int)[0:50]
 ```
+
+
+## Loops  
+
+`for` is Go’s only looping construct. Here is a classic initial/condition/after for loop:  
+
+```go
+for i := start; i < end; i++ {
+    // ...
+}
+```
+
+If you skip the init and post statements, you get a `while` loop.  
+
+```go
+for n < end {
+    // ...
+    n++
+}
+```
+
+If you skip the condition as well, you get an infinite loop.  
+
+```go
+for {
+    // ...
+}
+```
+
+#### For-each range loop  
+Looping over elements in slices, arrays, maps, channels or strings is often better done with a range loop.  
+The `range` form of the for loop iterates over a slice or map.  
+When ranging over a slice, two values are returned for each iteration. The first is the index, and the second is a copy of the element at that index.
+
+```go
+names := []string{"john", "mike", "alice", "bob"}
+
+for i, s := range names {
+    fmt.Println(i, s)
+}
+```
