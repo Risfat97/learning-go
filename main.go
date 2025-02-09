@@ -28,4 +28,9 @@ func main() {
 	students1 = append(students1, "Marc", "Toby")
 	fmt.Println(students, students1) // Output: [John Jane Marc Toby Alice] [John Jane Marc Toby]
 	fmt.Println("cap(students1) =", cap(students1))
+
+	// Creating slice with make
+	score := make([]int, 3, 10) // score = [0 0 0]
+	score = append(score, 25)   // score [0 0 0 25]
+	fmt.Println(score, len(score), cap(score))
 }
