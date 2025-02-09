@@ -44,7 +44,7 @@ Numbers have different types:
 
 ## Array and Slices  
 
-In Go, an aray is a numbered sequence of elements of a single type, called yhe element type. The length of array `a` can be discovered using the built-in function `len`. The elements can be addressed by integer indices 0 through `len(a)-1`.  
+In Go, an aray is a numbered sequence of elements of a single type, called the element type. The length of array `a` can be discovered using the built-in function `len`. The elements can be addressed by integer indices 0 through `len(a)-1`.  
 Once you create an array you cannot change its length.  
 Examples:  
 
@@ -74,3 +74,13 @@ Examples:
 
 >**Note**: Capacity determines how much a slice can grow without needing to allocate a new array. If you append elements to a slice and it exceeds its capacity, Go will automatically create a new array with a larger capacity and copy the elements over.  
 
+A new, initialized slice value for a given element type T may be made using the built-in function `make`, which takes a slice type and parameters specifying the length and optionally the capacity. A slice created with make always allocates a new, hidden array to which the returned slice value refers. That is, executing  
+
+>`make([]T, length, capacity)`
+
+produces the same slice as allocating an array and slicing it, so these two expressions are equivalent:  
+
+```go
+make([]int, 50, 100)
+new([100]int)[0:50]
+```
